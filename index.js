@@ -1,3 +1,15 @@
+const Vector = function () {
+    if (arguments.length == 4) {
+        return new Vector4(arguments[0], arguments[1], arguments[2], arguments[3])
+    } else if (arguments.length == 3) {
+        return new Vector3(arguments[0], arguments[1], arguments[2])
+    } else if (arguments.length == 2) {
+        return new Vector3(arguments[0], arguments[1])
+    } else {
+        throw new Error("Error occured while trying to parse Vector.")
+    }
+}
+
 const Vector4 = class Vector4 {
     constructor(x, y, z, w) {
         this.x = x
@@ -124,7 +136,40 @@ const calcDimensions = (v) => {
     }
 }
 
+const Map2D = class Map2D {
+    constructor(x, y) {
+        this.x = x
+        this.y = y
+    }
+    filledVectors = []
+    fillVector = (vector) => {
+        if (typeof vector != "object" && vector.x && vector.y) {
+            console.log("err: NaV")
+            return false
+        }
+        if (vector.x > this.x || vector.y > this.y) {
+            console.log("err: OOM")
+            return false
+        }
+        this.filledVectors.push(vector)
+        return true
+    }
+    isFilled = (vector) => {
+        if (typeof vector != "object" && vector.x && vector.y) {
+            console.log("err: NaV")
+            return false
+        }
+        if (vector.x > this.x || vector.y > this.y) {
+            console.log("err: OOM")
+            return false
+        }
+        return this.filledVectors.includes(vector)
+    }
+}
+
+exports.Vector = Vector
 exports.Vector4 = Vector4
 exports.Vector3 = Vector3
 exports.Vector2 = Vector2
 exports.calcDimensions = calcDimensions
+exports.Map2D = Map2D

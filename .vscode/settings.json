@@ -1,0 +1,7 @@
+{
+    "editor.formatOnSave": true,
+    "prettier.semi": false,
+    "prettier.tabWidth": 4,
+    "prettier.arrowParens": "always",
+    "prettier.printWidth": 100
+}

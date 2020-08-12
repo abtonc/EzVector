@@ -18,7 +18,7 @@ npm install ezvector
 
 ## Usage
 
-[GitBook - EzVector](https://github.com/)
+[Wiki - EzVector](https://github.com/abtonc/EzVector/wiki)
 
 ## Contributing
 

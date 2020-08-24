@@ -1,6 +1,6 @@
 {
     "name": "ezvector",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Easy, object orianted, clean tool for calculating Vector's.",
     "main": "index.js",
     "scripts": {

@@ -154,16 +154,48 @@ const Map2D = class Map2D {
         this.filledVectors.push(vector)
         return true
     }
-    isFilled = (vector) => {
+}
+
+const Map3D = class Map3D {
+    constructor(x, y, z) {
+        this.x = x
+        this.y = y
+        this.z = z
+    }
+    filledVectors = []
+    fillVector = (vector) => {
         if (typeof vector != "object" && vector.x && vector.y) {
             console.log("err: NaV")
             return false
         }
-        if (vector.x > this.x || vector.y > this.y) {
+        if (vector.x > this.x || vector.y > this.y || vector.z > this.z) {
             console.log("err: OOM")
             return false
         }
-        return this.filledVectors.includes(vector)
+        this.filledVectors.push(vector)
+        return true
+    }
+}
+
+const Map4D = class Map4D {
+    constructor(x, y, z, w) {
+        this.x = x
+        this.y = y
+        this.z = z
+        this.w = w
+    }
+    filledVectors = []
+    fillVector = (vector) => {
+        if (typeof vector != "object" && vector.x && vector.y) {
+            console.log("err: NaV")
+            return false
+        }
+        if (vector.x > this.x || vector.y > this.y || vector.z > this.z || vector.w > this.w) {
+            console.log("err: OOM")
+            return false
+        }
+        this.filledVectors.push(vector)
+        return true
     }
 }
 
@@ -173,3 +205,5 @@ exports.Vector3 = Vector3
 exports.Vector2 = Vector2
 exports.calcDimensions = calcDimensions
 exports.Map2D = Map2D
+exports.Map3D = Map3D
+exports.Map4D = Map4D

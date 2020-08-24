@@ -1,3 +1,5 @@
+//made with love by abtonc <3
+
 const Vector = function () {
     if (arguments.length == 4) {
         return new Vector4(arguments[0], arguments[1], arguments[2], arguments[3])
@@ -136,6 +138,18 @@ const calcDimensions = (v) => {
     }
 }
 
+const Map = function () {
+    if (arguments[0].w) {
+        return new Map4D(arguments[0])
+    } else if (arguments[0].z) {
+        return new Map3D(arguments[0])
+    } else if (arguments[0].y) {
+        return new Map2D(arguments[0])
+    } else {
+        throw new Error("Error occured while trying to parse Vector.")
+    }
+}
+
 const Map2D = class Map2D {
     constructor(x, y) {
         this.x = x
@@ -204,6 +218,12 @@ exports.Vector4 = Vector4
 exports.Vector3 = Vector3
 exports.Vector2 = Vector2
 exports.calcDimensions = calcDimensions
+exports.Map = Map
 exports.Map2D = Map2D
 exports.Map3D = Map3D
 exports.Map4D = Map4D
+exports.information = {
+    version: "1.0.3",
+    author: "abtonc",
+    lastUpdate: Date.parse("24.08.2020 15:51"),
+}

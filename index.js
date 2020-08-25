@@ -19,15 +19,15 @@ const Vector4 = class Vector4 {
         this.z = z
         this.w = w
     }
-    static calcArea = (x, y, z, w) => {
+    static CalcArea = (x, y, z, w) => {
         return x * y * z * w
     }
-    static distance = (v1, v2) => {
+    static Distance = (v1, v2) => {
         return Math.sqrt(
             (v1.x - v2.x) ** 2 + (v1.y - v2.y) ** 2 + (v1.z - v2.z) ** 2 + (v1.w - v2.w) ** 2
         )
     }
-    static add = (arr) => {
+    static Add = (arr) => {
         var result = new Vector4(0, 0, 0, 0)
         for (let i = 0; i < arr.length; i++) {
             result.x += arr[i].x
@@ -37,7 +37,7 @@ const Vector4 = class Vector4 {
         }
         return result
     }
-    static subtract = (arr) => {
+    static Subtract = (arr) => {
         var result = new Vector4(0, 0, 0, 0)
         for (let i = 0; i < arr.length; i++) {
             if (i == 0) {
@@ -62,13 +62,13 @@ const Vector3 = class Vector3 {
         this.y = y
         this.z = z
     }
-    static calcArea = (x, y, z) => {
+    static CalcArea = (x, y, z) => {
         return x * y * z
     }
-    static distance = (v1, v2) => {
+    static Distance = (v1, v2) => {
         return Math.sqrt((v1.x - v2.x) ** 2 + (v1.y - v2.y) ** 2 + (v1.z - v2.z) ** 2)
     }
-    static add = (arr) => {
+    static Add = (arr) => {
         var result = new Vector3(0, 0, 0)
         for (let i = 0; i < arr.length; i++) {
             result.x += arr[i].x
@@ -77,7 +77,7 @@ const Vector3 = class Vector3 {
         }
         return result
     }
-    static subtract = (arr) => {
+    static Subtract = (arr) => {
         var result = new Vector3(0, 0, 0)
         for (let i = 0; i < arr.length; i++) {
             if (i == 0) {
@@ -99,13 +99,13 @@ const Vector2 = class Vector2 {
         this.x = x
         this.y = y
     }
-    static calcArea = (x, y) => {
+    static CalcArea = (x, y) => {
         return x * y
     }
-    static distance = (v1, v2) => {
+    static Distance = (v1, v2) => {
         return Math.sqrt((v1.x - v2.x) ** 2 + (v1.y - v2.y) ** 2)
     }
-    static add = (arr) => {
+    static Add = (arr) => {
         var result = new Vector2(0, 0)
         for (let i = 0; i < arr.length; i++) {
             result.x += arr[i].x
@@ -113,7 +113,7 @@ const Vector2 = class Vector2 {
         }
         return result
     }
-    static subtract = (arr) => {
+    static Subtract = (arr) => {
         var result = new Vector2(0, 0)
         for (let i = 0; i < arr.length; i++) {
             if (i == 0) {
@@ -128,13 +128,42 @@ const Vector2 = class Vector2 {
     }
 }
 
-const calcDimensions = (v) => {
+const CalcDimensions = (v) => {
     if (v.w) {
         return 4
     } else if (v.z) {
         return 3
     } else if (v.y) {
         return 2
+    }
+}
+
+const Distance = (vector1, vector2) => {
+    if (CalcDimensions(vector1) != CalcDimensions(vector2)) {
+        throw new Error("Different dimensions or parameters not EzVector Vector.")
+    }
+    switch (CalcDimensions(vector1)) {
+        case 2:
+            return Math.sqrt((vector1.x - vector2.x) ** 2 + (vector1.y - vector2.y) ** 2)
+            break
+        case 3:
+            return Math.sqrt(
+                (vector1.x - vector2.x) ** 2 +
+                    (vector1.y - vector2.y) ** 2 +
+                    (vector1.z - vector2.z) ** 2
+            )
+            break
+        case 4:
+            return Math.sqrt(
+                (vector1.x - vector2.x) ** 2 +
+                    (vector1.y - vector2.y) ** 2 +
+                    (vector1.z - vector2.z) ** 2 +
+                    (vector1.w - vector2.w) ** 2
+            )
+            break
+        default:
+            throw new Error("Different dimensions or parameters not Vector.")
+            break
     }
 }
 
@@ -156,7 +185,7 @@ const Map2D = class Map2D {
         this.y = y
     }
     filledVectors = []
-    fillVector = (vector) => {
+    FillVector = (vector) => {
         if (typeof vector != "object" && vector.x && vector.y) {
             console.log("err: NaV")
             return false
@@ -177,7 +206,7 @@ const Map3D = class Map3D {
         this.z = z
     }
     filledVectors = []
-    fillVector = (vector) => {
+    FillVector = (vector) => {
         if (typeof vector != "object" && vector.x && vector.y) {
             console.log("err: NaV")
             return false
@@ -199,7 +228,7 @@ const Map4D = class Map4D {
         this.w = w
     }
     filledVectors = []
-    fillVector = (vector) => {
+    FillVector = (vector) => {
         if (typeof vector != "object" && vector.x && vector.y) {
             console.log("err: NaV")
             return false
@@ -217,13 +246,14 @@ exports.Vector = Vector
 exports.Vector4 = Vector4
 exports.Vector3 = Vector3
 exports.Vector2 = Vector2
-exports.calcDimensions = calcDimensions
+exports.CalcDimensions = CalcDimensions
+exports.Distance = Distance
 exports.Map = Map
 exports.Map2D = Map2D
 exports.Map3D = Map3D
 exports.Map4D = Map4D
 exports.information = {
-    version: "1.0.3",
+    version: "1.0.4",
     author: "abtonc",
-    lastUpdate: Date.parse("24.08.2020 15:51"),
+    lastUpdate: Date.parse("25.08.2020 15:40"),
 }

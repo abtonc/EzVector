@@ -197,6 +197,33 @@ const Map2D = class Map2D {
         this.filledVectors.push(vector)
         return true
     }
+    IsFilled = (vector) => {
+        var vectors = this.filledVectors.filter((vec) => vec.x == vector.x && vec.y == vector.y)
+        if (vectors.length > 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+    RandomVector = () => {
+        return new Vector2(
+            Math.floor(Math.random() * (this.x + 1)),
+            Math.floor(Math.random() * (this.y + 1))
+        )
+    }
+    Print = (filledCharacter, emptyCharacter) => {
+        for (var height = 0; height < this.y; height++) {
+            var string = ""
+            for (var width = 0; width < this.x; width++) {
+                if (this.IsFilled(new Vector2(width, height))) {
+                    string += filledCharacter
+                } else {
+                    string += emptyCharacter
+                }
+            }
+            console.log(string)
+        }
+    }
 }
 
 const Map3D = class Map3D {
@@ -217,6 +244,23 @@ const Map3D = class Map3D {
         }
         this.filledVectors.push(vector)
         return true
+    }
+    IsFilled = (vector) => {
+        var vectors = this.filledVectors.filter(
+            (vec) => vec.x == vector.x && vec.y == vector.y && vec.z == vector.z
+        )
+        if (vectors.length > 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+    RandomVector = () => {
+        return new Vector3(
+            Math.floor(Math.random() * (this.x + 1)),
+            Math.floor(Math.random() * (this.y + 1)),
+            Math.floor(Math.random() * (this.z + 1))
+        )
     }
 }
 
@@ -239,6 +283,25 @@ const Map4D = class Map4D {
         }
         this.filledVectors.push(vector)
         return true
+    }
+    IsFilled = (vector) => {
+        var vectors = this.filledVectors.filter(
+            (vec) =>
+                vec.x == vector.x && vec.y == vector.y && vec.z == vector.z && vec.w == vector.w
+        )
+        if (vectors.length > 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+    RandomVector = () => {
+        return new Vector4(
+            Math.floor(Math.random() * (this.x + 1)),
+            Math.floor(Math.random() * (this.y + 1)),
+            Math.floor(Math.random() * (this.z + 1)),
+            Math.floor(Math.random() * (this.w + 1))
+        )
     }
 }
 

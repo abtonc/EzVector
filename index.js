@@ -19,8 +19,8 @@ const Vector4 = class Vector4 {
         this.z = z
         this.w = w
     }
-    static CalcArea = (x, y, z, w) => {
-        return x * y * z * w
+    static CalcArea = (vector) => {
+        return vector.x * vector.y * vector.z * vector.w
     }
     static Distance = (v1, v2) => {
         return Math.sqrt(
@@ -62,8 +62,8 @@ const Vector3 = class Vector3 {
         this.y = y
         this.z = z
     }
-    static CalcArea = (x, y, z) => {
-        return x * y * z
+    static CalcArea = (vector) => {
+        return vector.x * vector.y * vector.z
     }
     static Distance = (v1, v2) => {
         return Math.sqrt((v1.x - v2.x) ** 2 + (v1.y - v2.y) ** 2 + (v1.z - v2.z) ** 2)
@@ -99,8 +99,8 @@ const Vector2 = class Vector2 {
         this.x = x
         this.y = y
     }
-    static CalcArea = (x, y) => {
-        return x * y
+    static CalcArea = (vector) => {
+        return vector.x * vector.y
     }
     static Distance = (v1, v2) => {
         return Math.sqrt((v1.x - v2.x) ** 2 + (v1.y - v2.y) ** 2)
@@ -252,8 +252,3 @@ exports.Map = Map
 exports.Map2D = Map2D
 exports.Map3D = Map3D
 exports.Map4D = Map4D
-exports.information = {
-    version: "1.0.4",
-    author: "abtonc",
-    lastUpdate: Date.parse("25.08.2020 15:40"),
-}

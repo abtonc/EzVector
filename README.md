@@ -4,7 +4,7 @@ EzVector is Vector calculation module.
 
 ## Installation
 
-Use the package manager [npm](https://www.npmjs.com/get-npm) to install EzVector.
+You can use the package manager [npm](https://www.npmjs.com/get-npm) to install EzVector.
 
 ```bash
 npm i ezvector

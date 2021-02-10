@@ -1,18 +1,18 @@
 {
-    "name": "ezvector",
-    "version": "1.0.6",
-    "description": "Easy, object orianted, clean tool for calculating Vector's.",
-    "main": "index.js",
-    "scripts": {
-        "test": "node test.js"
-    },
-    "keywords": [
-        "vector",
-        "ezvector",
-        "vector3",
-        "vector2",
-        "vector4"
-    ],
-    "author": "abtonc",
-    "license": "ISC"
+  "name": "ezvector",
+  "version": "1.0.7",
+  "description": "Easy to use and object orianted tool for Vector calculations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "vector",
+    "ezvector",
+    "vector3",
+    "vector2",
+    "vector4"
+  ],
+  "author": "abtonc",
+  "license": "MIT"
 }

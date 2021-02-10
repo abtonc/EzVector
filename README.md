@@ -26,4 +26,4 @@ npm install ezvector
 
 ## License
 
-[ISC](https://opensource.org/licenses/ISC)
+[MIT](https://github.com/abtonc/EzVector/blob/master/LICENSE)

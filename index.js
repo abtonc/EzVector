@@ -17,19 +17,19 @@ class Vector4 {
     this.z = z;
     this.w = w;
   }
-  static CalcArea = (vector) => {
+  static CalcArea(vector) {
     return vector.x * vector.y * vector.z * vector.w;
-  };
-  static Distance = (v1, v2) => {
+  }
+  static Distance(v1, v2) {
     return Math.sqrt(
       (v1.x - v2.x) ** 2 +
         (v1.y - v2.y) ** 2 +
         (v1.z - v2.z) ** 2 +
         (v1.w - v2.w) ** 2,
     );
-  };
-  static Add = (arr) => {
-    var result = new Vector4(0, 0, 0, 0);
+  }
+  static Add(arr) {
+    let result = new Vector4(0, 0, 0, 0);
     for (let i = 0; i < arr.length; i++) {
       result.x += arr[i].x;
       result.y += arr[i].y;
@@ -37,9 +37,9 @@ class Vector4 {
       result.w += arr[i].w;
     }
     return result;
-  };
-  static Subtract = (arr) => {
-    var result = new Vector4(0, 0, 0, 0);
+  }
+  static Subtract(arr) {
+    let result = new Vector4(0, 0, 0, 0);
     for (let i = 0; i < arr.length; i++) {
       if (i == 0) {
         result.x += arr[i].x;
@@ -54,7 +54,7 @@ class Vector4 {
       }
     }
     return result;
-  };
+  }
 }
 
 class Vector3 {
@@ -63,25 +63,25 @@ class Vector3 {
     this.y = y;
     this.z = z;
   }
-  static CalcArea = (vector) => {
+  static CalcArea(vector) {
     return vector.x * vector.y * vector.z;
-  };
-  static Distance = (v1, v2) => {
+  }
+  static Distance(v1, v2) {
     return Math.sqrt(
       (v1.x - v2.x) ** 2 + (v1.y - v2.y) ** 2 + (v1.z - v2.z) ** 2,
     );
-  };
-  static Add = (arr) => {
-    var result = new Vector3(0, 0, 0);
+  }
+  static Add(arr) {
+    let result = new Vector3(0, 0, 0);
     for (let i = 0; i < arr.length; i++) {
       result.x += arr[i].x;
       result.y += arr[i].y;
       result.z += arr[i].z;
     }
     return result;
-  };
-  static Subtract = (arr) => {
-    var result = new Vector3(0, 0, 0);
+  }
+  static Subtract(arr) {
+    let result = new Vector3(0, 0, 0);
     for (let i = 0; i < arr.length; i++) {
       if (i == 0) {
         result.x += arr[i].x;
@@ -94,7 +94,7 @@ class Vector3 {
       }
     }
     return result;
-  };
+  }
 }
 
 class Vector2 {
@@ -102,22 +102,22 @@ class Vector2 {
     this.x = x;
     this.y = y;
   }
-  static CalcArea = (vector) => {
+  static CalcArea(vector) {
     return vector.x * vector.y;
-  };
-  static Distance = (v1, v2) => {
+  }
+  static Distance(v1, v2) {
     return Math.sqrt((v1.x - v2.x) ** 2 + (v1.y - v2.y) ** 2);
-  };
-  static Add = (arr) => {
-    var result = new Vector2(0, 0);
+  }
+  static Add(arr) {
+    let result = new Vector2(0, 0);
     for (let i = 0; i < arr.length; i++) {
       result.x += arr[i].x;
       result.y += arr[i].y;
     }
     return result;
-  };
-  static Subtract = (arr) => {
-    var result = new Vector2(0, 0);
+  }
+  static Subtract(arr) {
+    let result = new Vector2(0, 0);
     for (let i = 0; i < arr.length; i++) {
       if (i == 0) {
         result.x += arr[i].x;
@@ -128,10 +128,10 @@ class Vector2 {
       }
     }
     return result;
-  };
+  }
 }
 
-const CalcDimensions = (v) => {
+const CalcDimensions = function (v) {
   if (v.w) {
     return 4;
   } else if (v.z) {
@@ -141,7 +141,7 @@ const CalcDimensions = (v) => {
   }
 };
 
-const Distance = (vector1, vector2) => {
+const Distance = function (vector1, vector2) {
   if (CalcDimensions(vector1) != CalcDimensions(vector2)) {
     throw new Error('Different dimensions or parameters not EzVector Vector.');
   }
@@ -190,7 +190,7 @@ class Map2D {
     this.y = y;
   }
   filledVectors = [];
-  FillVector = (vector) => {
+  FillVector(vector) {
     if (typeof vector != 'object' && vector.x && vector.y) {
       console.log('err: NaV');
       return false;
@@ -201,9 +201,9 @@ class Map2D {
     }
     this.filledVectors.push(vector);
     return true;
-  };
-  IsFilled = (vector) => {
-    var vectors = this.filledVectors.filter(
+  }
+  IsFilled(vector) {
+    let vectors = this.filledVectors.filter(
       (vec) => vec.x == vector.x && vec.y == vector.y,
     );
     if (vectors.length > 0) {
@@ -211,17 +211,17 @@ class Map2D {
     } else {
       return false;
     }
-  };
-  RandomVector = () => {
+  }
+  RandomVector() {
     return new Vector2(
       Math.floor(Math.random() * (this.x + 1)),
       Math.floor(Math.random() * (this.y + 1)),
     );
-  };
-  Print = (filledCharacter, emptyCharacter) => {
-    for (var height = 0; height < this.y; height++) {
-      var string = '';
-      for (var width = 0; width < this.x; width++) {
+  }
+  Print(filledCharacter, emptyCharacter) {
+    for (let height = 0; height < this.y; height++) {
+      let string = '';
+      for (let width = 0; width < this.x; width++) {
         if (this.IsFilled(new Vector2(width, height))) {
           string += filledCharacter;
         } else {
@@ -230,7 +230,7 @@ class Map2D {
       }
       console.log(string);
     }
-  };
+  }
 }
 
 class Map3D {
@@ -240,7 +240,7 @@ class Map3D {
     this.z = z;
   }
   filledVectors = [];
-  FillVector = (vector) => {
+  FillVector(vector) {
     if (typeof vector != 'object' && vector.x && vector.y) {
       console.log('err: NaV');
       return false;
@@ -251,9 +251,9 @@ class Map3D {
     }
     this.filledVectors.push(vector);
     return true;
-  };
-  IsFilled = (vector) => {
-    var vectors = this.filledVectors.filter(
+  }
+  IsFilled(vector) {
+    let vectors = this.filledVectors.filter(
       (vec) => vec.x == vector.x && vec.y == vector.y && vec.z == vector.z,
     );
     if (vectors.length > 0) {
@@ -261,14 +261,14 @@ class Map3D {
     } else {
       return false;
     }
-  };
-  RandomVector = () => {
+  }
+  RandomVector() {
     return new Vector3(
       Math.floor(Math.random() * (this.x + 1)),
       Math.floor(Math.random() * (this.y + 1)),
       Math.floor(Math.random() * (this.z + 1)),
     );
-  };
+  }
 }
 
 class Map4D {
@@ -279,7 +279,7 @@ class Map4D {
     this.w = w;
   }
   filledVectors = [];
-  FillVector = (vector) => {
+  FillVector(vector) {
     if (typeof vector != 'object' && vector.x && vector.y) {
       console.log('err: NaV');
       return false;
@@ -295,9 +295,9 @@ class Map4D {
     }
     this.filledVectors.push(vector);
     return true;
-  };
-  IsFilled = (vector) => {
-    var vectors = this.filledVectors.filter(
+  }
+  IsFilled(vector) {
+    let vectors = this.filledVectors.filter(
       (vec) =>
         vec.x == vector.x &&
         vec.y == vector.y &&
@@ -309,15 +309,15 @@ class Map4D {
     } else {
       return false;
     }
-  };
-  RandomVector = () => {
+  }
+  RandomVector() {
     return new Vector4(
       Math.floor(Math.random() * (this.x + 1)),
       Math.floor(Math.random() * (this.y + 1)),
       Math.floor(Math.random() * (this.z + 1)),
       Math.floor(Math.random() * (this.w + 1)),
     );
-  };
+  }
 }
 
 exports.Vector = Vector;
